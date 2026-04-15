@@ -36,7 +36,9 @@ return {
               },
             },
           },
-          root_dir = function(fname)
+          root_dir = function(bufnr)
+            -- nvim-lspconfig v1+ passes bufnr, not fname
+            local fname = vim.api.nvim_buf_get_name(bufnr)
             local util = require("lspconfig.util")
             return util.root_pattern(
               "tailwind.config.js",

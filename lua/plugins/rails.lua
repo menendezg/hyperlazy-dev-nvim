@@ -9,12 +9,22 @@ return {
     ft = { "ruby", "eruby" },
   },
 
-  -- Add Ruby LSP configuration
+  -- Ruby LSP configuration (ruby-lsp is the modern standard)
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        -- ruby-lsp: modern Ruby LSP maintained by Shopify
+        ruby_lsp = {
+          enabled = true,
+          init_options = {
+            formatter = "rubocop",
+            linters = { "rubocop" },
+          },
+        },
+        -- solargraph: keep as fallback, disable if ruby-lsp is working
         solargraph = {
+          enabled = false, -- disable to avoid duplicate diagnostics; set true if you prefer it
           settings = {
             solargraph = {
               diagnostics = true,
@@ -33,7 +43,7 @@ return {
     },
   },
 
-  -- Add Ruby treesitter support
+  -- Ruby treesitter support
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)

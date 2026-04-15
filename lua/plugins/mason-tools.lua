@@ -4,7 +4,8 @@ return {
     opts = {
       ensure_installed = {
         -- Ruby
-        "solargraph",
+        "ruby-lsp",       -- Modern Ruby LSP (replaces solargraph)
+        "solargraph",     -- Keep as fallback
         "rubocop",
         "htmlbeautifier", -- For ERB formatting
 
@@ -17,11 +18,15 @@ return {
         "prettier",
         "eslint_d",
 
-        -- Tailwind CSS
+        -- HTML
+        "html-lsp", -- HTML language server (vscode-langservers-extracted)
+
+        -- CSS
+        "css-lsp", -- cssls (vscode-langservers-extracted)
         "tailwindcss-language-server",
 
         -- General
-        "stylua", -- Lua formatter
+        "stylua",      -- Lua formatter
         "shellcheck",
         "shfmt",
       },
